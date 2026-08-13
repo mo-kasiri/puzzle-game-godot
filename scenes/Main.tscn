@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://c4c5rq1faj2e7" path="res://resources/highlight_tileset.tres" id="2_rvslj"]
 [ext_resource type="Texture2D" uid="uid://dqvm087fixv6o" path="res://assets/Buildings/tower_construction.png" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://djww42x30537n" path="res://scenes/manager/GridManager.tscn" id="5_vcsgt"]
+[ext_resource type="PackedScene" uid="uid://d31iwpc7fna50" path="res://scenes/buildings/Base.tscn" id="6_c01mt"]
 
 [node name="Main" type="Node" unique_id=717218717]
 script = ExtResource("1_elqb8")
@@ -36,3 +37,6 @@ offset_right = 171.0
 offset_bottom = 703.0
 text = "Place Building"
 vertical_icon_alignment = 2
+
+[node name="Base" parent="." unique_id=413551345 instance=ExtResource("6_c01mt")]
+position = Vector2(448, 320)

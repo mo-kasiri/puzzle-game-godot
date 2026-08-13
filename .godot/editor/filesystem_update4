@@ -1,0 +1,8 @@
+res://scenes/components/BuildingComponent.tscn
+res://resources/tiles.tres
+res://resources/highlight_tileset.tres
+res://scenes/components/BuildingComponent.cs
+res://scenes/manager/GridManager.cs
+res://scenes/Main.cs
+res://GlobalConstants.cs
+res://scenes/buildings/Base.tscn

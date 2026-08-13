@@ -1,3 +1,42 @@
-# Godot 4+ specific ignores
-.godot/
-/android/
+# Godot specific
+.godot/                  # Temporary files, imported resources, and cache
+.import/                 # Older Godot 3 import data (if present)
+export_presets.cfg       # Optional: ignore if you don’t want to share export presets
+*.tmp                    # Temporary files
+*.log                    # Log files
+
+# C# build artifacts
+bin/
+obj/
+*.csproj.user
+*.suo
+*.pidb
+*.userprefs
+*.sln.docstates
+
+# IDE / editor
+.vs/                     # Visual Studio
+.idea/                   # JetBrains Rider
+.vscode/                 # VS Code – comment out if you share workspace settings
+*.swp                    # Vim swap files
+*.swo
+
+# Mono / .NET
+.mono/
+packages/                # NuGet packages (if not using PackageReference)
+
+# OS generated
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Downloads
+downloads
+
+# Godot 4 specific (if using, the .godot folder is enough)
+# .godot/ is already covered
+
+# Optional: ignore the generated solution file if you regenerate it often
+# *.sln
+# *.csproj
+# but usually you want to keep these under version control

@@ -18,10 +18,11 @@ public partial class Main : Node
     private Button _placeBuildingButton;          // UI button to toggle placement mode
     
     // State
-    private Vector2? _hoveredGridCellPosition;        // Last cached grid position for highlight updates (null if hidden)
+    private Vector2I? _hoveredGridCellPosition;        // Last cached grid position for highlight updates (null if hidden)
     
     public override void _Ready()
     {
+        GD.Print("Game is stated!");
         // Load resources and get child nodes
         _buildingScene = GD.Load<PackedScene>("res://scenes/buildings/Building.tscn");
         _cursor = GetNode<Sprite2D>("Cursor");
@@ -50,7 +51,7 @@ public partial class Main : Node
             || !_cursor.Visible
             || !evt.IsActionPressed("left_click")
             || !_hoveredGridCellPosition.HasValue
-            || !_gridManager.IsTilePositionValid(_hoveredGridCellPosition.Value)
+            || !_gridManager.IsTilePositionValid(new Vector2I((int)_hoveredGridCellPosition.Value.X, (int)_hoveredGridCellPosition.Value.Y))
            )
         {
             return;
@@ -68,18 +69,20 @@ public partial class Main : Node
         }
         
         // Get the current grid cell under the mouse
-        Vector2 currentGridPosition = _gridManager.GetMouseGridCellPosition();
+        Vector2I currentGridPosition = _gridManager.GetMouseGridCellPosition();
         
         // Move the cursor sprite to that cell
+        //var currentGridPositionI = new Vector2I((int)currentGridPosition.X, (int)currentGridPosition.Y);
         UpdateCursorPosition(currentGridPosition);
         
-        _gridManager.HighlightValidTilesInRadius(currentGridPosition, HighlightRadius);
+        //_gridManager.HighlightValidTilesInRadius(new Vector2I((int)currentGridPosition.X, (int)currentGridPosition.Y), HighlightRadius);
+        _gridManager.HighlightBuildableTiles();
     }
     
    
 
    
-    private void UpdateCursorPosition(Vector2 gridPosition)
+    private void UpdateCursorPosition(Vector2I gridPosition)
     {
         _cursor.GlobalPosition = gridPosition * GlobalConstants.GridCellSize;
         _hoveredGridCellPosition = gridPosition;
